@@ -4,9 +4,10 @@ import br.com.fiap.application.core.domain.ComboSelection;
 import br.com.fiap.application.core.domain.Customer;
 import br.com.fiap.application.core.domain.Order;
 import br.com.fiap.application.core.domain.Product;
+import br.com.fiap.application.ports.in.IInsertOrderInputPort;
 import br.com.fiap.application.ports.out.IInsertOrderOutputPort;
 
-public class InsertOrderUseCase {
+public class InsertOrderUseCase implements IInsertOrderInputPort {
 
     private final IInsertOrderOutputPort iInsertOrderOutputPort;
 
@@ -14,7 +15,8 @@ public class InsertOrderUseCase {
         this.iInsertOrderOutputPort = iInsertOrderOutputPort;
     }
 
-    public void insertOrder(Order order){
+    @Override
+    public void insert(Order order){
         var customer = new Customer();
         var combo = new ComboSelection();
 
