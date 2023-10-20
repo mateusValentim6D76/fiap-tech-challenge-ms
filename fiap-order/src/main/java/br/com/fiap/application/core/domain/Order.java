@@ -1,17 +1,30 @@
 package br.com.fiap.application.core.domain;
 
 public class Order {
-    public Order(){
-        
+
+    public Order() {
+
     }
-    public Order(Long id, Customer customer, String orderDescription) {
+    public Order(Customer customer, Product product, String orderDescription) {
         this.id = id;
         this.customer = customer;
+        this.product = product;
         this.orderDescription = orderDescription;
     }
 
+    public Order(Customer customer, Product product) {
+        this.id = id;
+        this.customer = customer;
+        this.product = product;
+    }
+
+    public Order(Product product) {
+        this.id = id;
+        this.product = product;
+    }
     private Long id;
     private Customer customer;
+    private Product product;
     private String orderDescription;
 
     public Long getId() {
@@ -36,5 +49,13 @@ public class Order {
 
     public void setOrderDescription(String orderDescription) {
         this.orderDescription = orderDescription;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 }
