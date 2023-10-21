@@ -1,10 +1,18 @@
 package br.com.fiap.adapters.out.repository.entity;
 
 import br.com.fiap.application.core.domain.ComboSelection;
-import lombok.Data;
-import org.springframework.data.annotation.Id;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.*;
 
-@Data
+@Table(name = "product")
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@Entity
 public class ProductEntity {
 
     @Id

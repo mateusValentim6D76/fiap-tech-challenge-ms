@@ -6,20 +6,17 @@ public class Order {
 
     }
     public Order(Customer customer, Product product, String orderDescription) {
-        this.id = id;
         this.customer = customer;
         this.product = product;
         this.orderDescription = orderDescription;
     }
 
     public Order(Customer customer, Product product) {
-        this.id = id;
         this.customer = customer;
         this.product = product;
     }
 
     public Order(Product product) {
-        this.id = id;
         this.product = product;
     }
     private Long id;

@@ -1,5 +1,6 @@
 package br.com.fiap.application.core.domain;
 
+
 import lombok.Getter;
 
 public class Customer {
@@ -60,5 +61,11 @@ public class Customer {
 
     public void setValidCpf(Boolean validCpf) {
         isValidCpf = validCpf;
+    }
+    public Long getId() {
+        return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
     }
 }

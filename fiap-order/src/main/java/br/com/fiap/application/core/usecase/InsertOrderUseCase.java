@@ -6,6 +6,7 @@ import br.com.fiap.application.core.domain.Order;
 import br.com.fiap.application.core.domain.Product;
 import br.com.fiap.application.ports.in.IInsertOrderInputPort;
 import br.com.fiap.application.ports.out.IInsertOrderOutputPort;
+import org.springframework.stereotype.Component;
 
 public class InsertOrderUseCase implements IInsertOrderInputPort {
 

@@ -23,6 +23,9 @@ public class OrderController {
 
     @PostMapping
     public ResponseEntity<Void> insert(@Valid @RequestBody OrderRequest orderRequest) {
+       /*
+       Converts customerRequest to Customer
+        */
         var orderMapper = iOrderMapper.toOrder(orderRequest);
         iInsertOrderInputPort.insert(orderMapper);
         return ResponseEntity.ok().build();

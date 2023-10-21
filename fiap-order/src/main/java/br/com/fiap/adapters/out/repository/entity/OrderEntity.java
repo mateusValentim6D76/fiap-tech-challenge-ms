@@ -2,16 +2,20 @@ package br.com.fiap.adapters.out.repository.entity;
 
 import br.com.fiap.application.core.domain.Customer;
 import br.com.fiap.application.core.domain.Product;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.Builder;
-import lombok.Data;
-import org.springframework.data.annotation.Id;
+import lombok.*;
 
 import java.io.Serializable;
 
-@Data
 @Table(name = "order")
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@Entity
 public class OrderEntity implements Serializable {
 
     @Id

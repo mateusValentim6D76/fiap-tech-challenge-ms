@@ -1,6 +1,6 @@
 # Stage 1: Build the application with Maven
 FROM maven:3.8.1-openjdk-17-slim AS build
-COPY . .
+COPY fiap-order .
 RUN mvn clean package
 # Stage 2: Create a minimal JRE image
 FROM openjdk:17-slim
