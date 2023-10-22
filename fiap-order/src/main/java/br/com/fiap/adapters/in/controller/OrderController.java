@@ -21,7 +21,7 @@ public class OrderController {
     private final OrderRequestToOrderMapper orderRequestToOrderMapper;
 
     @PostMapping
-    public Order salvarUsuario(@RequestBody OrderRequest orderRequest){
+    public Order insertOrder(@RequestBody OrderRequest orderRequest){
         var order = orderRequestToOrderMapper.orderMapper(orderRequest);
         return iInsertOrderInputPort.insert(order);
     }
