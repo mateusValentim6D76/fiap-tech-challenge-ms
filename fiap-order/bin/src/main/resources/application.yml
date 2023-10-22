@@ -1,11 +1,11 @@
 server:
   port: 8080
 cors:
-  origin-patterns: "http://localhost:3000,http://localhost:8080"
+  originPatterns: http://localhost:3000,http://localhost:8080
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/orders?useTimezone=true&serverTimezone=UTC
+    url: jdbc:postgres://localhost:5432/order?useTimezone=true&serverTimezone=UTC
     username: postgres
     password: admin
   jpa:

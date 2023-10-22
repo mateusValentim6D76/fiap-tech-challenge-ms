@@ -1,22 +1,19 @@
 package br.com.fiap.adapters.out.repository.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import lombok.*;
+import jakarta.persistence.Embeddable;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Table(name = "customer")
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
+@Embeddable
 @Getter
 @Setter
-@Entity
+@NoArgsConstructor
+@AllArgsConstructor
 public class CustomerEntity {
 
-    @Id
-    private Long id;
-    private String name;
+    private String nameCustomer;
     private String cpf;
     private String email;
     private Boolean isValidCpf;

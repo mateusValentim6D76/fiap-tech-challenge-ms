@@ -1,64 +1,62 @@
 package br.com.fiap.application.core.domain;
 
+import br.com.fiap.application.core.domain.enums.ProductType;
+
 public class Product {
-    public Product(String name, String description, Double price, ComboSelection comboSelection) {
-        this.name = name;
-        this.description = description;
-        this.price = price;
-        this.comboSelection = comboSelection;
-    }
-    public Product(String name, Double price, ComboSelection comboSelection) {
-        this.name = name;
-        this.price = price;
-        this.comboSelection = comboSelection;
-    }
+	
+	public Product(String name, String description, Double price, ProductType productType) {
+		this.nameProduct = name;
+		this.description = description;
+		this.price = price;
+		this.productType = productType;
+	}
 
-    public Product() {
+	public Product(String name, Double price, ProductType productType) {
+		this.nameProduct = name;
+		this.price = price;
+		this.productType = productType;
+	}
 
-    }
-    private Long id;
-    private String name;
-    private String description;
-    private Double price;
-    private ComboSelection comboSelection;
+	public Product() {
 
-    public Long getId() {
-        return id;
-    }
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	private String nameProduct;
+	private String description;
+	private Double price;
+	private ProductType productType;
 
-    public String getName() {
-        return name;
-    }
+	public String getNameProduct() {
+		return nameProduct;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setNameProduct(String name) {
+		this.nameProduct = name;
+	}
 
-    public String getDescription() {
-        return description;
-    }
+	public String getDescription() {
+		return description;
+	}
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-    public Double getPrice() {
-        return price;
-    }
+	public Double getPrice() {
+		return price;
+	}
 
-    public void setPrice(Double price) {
-        this.price = price;
-    }
+	public void setPrice(Double price) {
+		this.price = price;
+	}
 
-    public ComboSelection getComboSelection() {
-        return comboSelection;
-    }
+	public ProductType getProductType() {
+		return productType;
+	}
 
-    public void setComboSelection(ComboSelection comboSelection) {
-        this.comboSelection = comboSelection;
-    }
+	public void setProductType(ProductType productType) {
+		this.productType = productType;
+	}
+	
+
 }

@@ -8,6 +8,7 @@ import lombok.Data;
 @Data
 public class OrderRequest {
 
+	@NotBlank
     private Customer customer;
     @NotBlank
     private Product product;

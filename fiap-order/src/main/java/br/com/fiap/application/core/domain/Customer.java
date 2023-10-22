@@ -1,12 +1,12 @@
 package br.com.fiap.application.core.domain;
 
 
-import lombok.Getter;
+
 
 public class Customer {
 
-    private Long id;
-    private String name;
+
+    private String nameCustomer;
     private String cpf;
     private String email;
     private Boolean isValidCpf;
@@ -15,15 +15,15 @@ public class Customer {
         this.isValidCpf = false;
     }
 
-    public Customer(String name, String cpf, String email, Boolean isValidCpf) {
-        this.name = name;
+    public Customer(String nameCustomer, String cpf, String email, Boolean isValidCpf) {
+        this.nameCustomer = nameCustomer;
         this.cpf = cpf;
         this.email = email;
         this.isValidCpf = isValidCpf;
     }
 
-    public Customer(String name, String cpf) {
-        this.name = name;
+    public Customer(String nameCustomer, String cpf) {
+        this.nameCustomer = nameCustomer;
         this.cpf = cpf;
     }
 
@@ -31,12 +31,12 @@ public class Customer {
         this.cpf = cpf;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNameCustomer(String nameCustomer) {
+        this.nameCustomer = nameCustomer;
     }
 
-    public String getName() {
-        return name;
+    public String getNameCustomer() {
+        return nameCustomer;
     }
 
     public void setCpf(String cpf) {
@@ -62,10 +62,5 @@ public class Customer {
     public void setValidCpf(Boolean validCpf) {
         isValidCpf = validCpf;
     }
-    public Long getId() {
-        return id;
-    }
-    public void setId(Long id) {
-        this.id = id;
-    }
+   
 }
