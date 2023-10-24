@@ -1,35 +1,33 @@
 package br.com.fiap.adapters.out.repository.entity;
 
-import br.com.fiap.application.core.domain.Customer;
-import br.com.fiap.application.core.domain.Product;
-import jakarta.persistence.Embedded;
+import br.com.fiap.application.core.domain.enums.ProductType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import java.io.Serializable;
-
-@Table(name = "orders")
+@Table(name = "NEW_ORDERS")
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @Entity
-public class OrderEntity implements Serializable {
+public class OrderEntity {
+	
+	private static final long serialVersionUID = -1989279167854870348L;
 
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @Embedded
-    private Customer customer;
-    @Embedded
-    private Product product;
-    private String orderDescription;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	private ProductType productType;
+	private String product;
+	private String orderDescription;
+	private Double price;
 }

@@ -2,8 +2,8 @@ package br.com.fiap.application.ports.in;
 
 import br.com.fiap.application.core.domain.Order;
 
+public interface IInsertOrderInputPort {
 
-public interface IInsertOrderInputPort  {
+	Order insert(Order order);
 
-    Order insert(Order order);
 }

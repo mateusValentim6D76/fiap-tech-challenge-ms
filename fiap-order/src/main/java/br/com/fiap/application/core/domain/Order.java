@@ -1,58 +1,58 @@
 package br.com.fiap.application.core.domain;
 
+import br.com.fiap.application.core.domain.enums.ProductType;
+
 public class Order {
 
-    public Order() {
 
-    }
-    public Order(Customer customer, Product product, String orderDescription) {
-        this.customer = customer;
-        this.product = product;
-        this.orderDescription = orderDescription;
-    }
+	private Long id;
+	private ProductType productType;
+	private String product;
+	private String orderDescription;
+	private Double price;
 
-    public Order(Customer customer, Product product) {
-        this.customer = customer;
-        this.product = product;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public Order(Product product) {
-        this.product = product;
-    }
-    private Long id;
-    private Customer customer;
-    private Product product;
-    private String orderDescription;
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public Long getId() {
-        return id;
-    }
+	public String getOrderDescription() {
+		return orderDescription;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public void setOrderDescription(String orderDescription) {
+		this.orderDescription = orderDescription;
+	}
 
-    public Customer getCustomer() {
-        return customer;
-    }
+	public ProductType getProductType() {
+		return productType;
+	}
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
+	public void setProductType(ProductType productType) {
+		this.productType = productType;
+	}
 
-    public String getOrderDescription() {
-        return orderDescription;
-    }
+	public String getProduct() {
+		return product;
+	}
 
-    public void setOrderDescription(String orderDescription) {
-        this.orderDescription = orderDescription;
-    }
+	public void setProduct(String product) {
+		this.product = product;
+	}
 
-    public Product getProduct() {
-        return product;
-    }
+	public Double getPrice() {
+		return price;
+	}
 
-    public void setProduct(Product product) {
-        this.product = product;
-    }
+	public void setPrice(Double price) {
+		this.price = price;
+	}
+	
+	
+	
+
+
 }
