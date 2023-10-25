@@ -7,7 +7,7 @@ import br.com.fiap.adapters.out.repository.entity.OrderEntity;
 import br.com.fiap.application.core.domain.Order;
 
 @Component
-public class OrderToOrderEntityMapper {
+public class OrderToEntityMapper {
 
     public OrderEntity mapper(Order order){
         var orderEntity = new OrderEntity();

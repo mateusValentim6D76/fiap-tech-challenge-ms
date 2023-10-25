@@ -1,6 +1,8 @@
 package br.com.fiap.adapters.out.repository.entity;
 
+import br.com.fiap.application.core.domain.Customer;
 import br.com.fiap.application.core.domain.enums.ProductType;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,8 +22,7 @@ import lombok.Setter;
 @Setter
 @Entity
 public class OrderEntity {
-	
-	private static final long serialVersionUID = -1989279167854870348L;
+
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,4 +31,16 @@ public class OrderEntity {
 	private String product;
 	private String orderDescription;
 	private Double price;
+	@Embedded
+	private Customer customer;
+
+	public OrderEntity(ProductType productType, String product, String orderDescription, Double price,
+			Customer customer) {
+		this.productType = productType;
+		this.product = product;
+		this.orderDescription = orderDescription;
+		this.price = price;
+		this.customer = new Customer(customer.getNameCustomer());
+	}
+
 }

@@ -17,4 +17,5 @@ public class CustomerEntity {
     private String cpf;
     private String email;
     private Boolean isValidCpf;
+    
 }

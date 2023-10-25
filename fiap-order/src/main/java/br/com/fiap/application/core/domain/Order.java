@@ -4,12 +4,24 @@ import br.com.fiap.application.core.domain.enums.ProductType;
 
 public class Order {
 
-
 	private Long id;
 	private ProductType productType;
 	private String product;
 	private String orderDescription;
 	private Double price;
+	private Customer customer;
+	
+	public Order() {
+		
+	}
+
+	public Order(ProductType productType, String product, String orderDescription, Double price, Customer customer) {
+		this.productType = productType;
+		this.product = product;
+		this.orderDescription = orderDescription;
+		this.price = price;
+		this.customer = customer;
+	}
 
 	public Long getId() {
 		return id;
@@ -50,9 +62,13 @@ public class Order {
 	public void setPrice(Double price) {
 		this.price = price;
 	}
-	
-	
-	
 
+	public Customer getCustomer() {
+		return customer;
+	}
 
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+	
 }
