@@ -3,20 +3,17 @@ package br.com.fiap.adapters.in.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.fiap.adapters.in.controller.mapper.OrderMapper;
 import br.com.fiap.adapters.in.controller.mapper.OrderRequestToOrderMapper;
 import br.com.fiap.adapters.in.controller.request.OrderRequest;
 import br.com.fiap.application.core.domain.Order;
+import br.com.fiap.application.ports.in.IFindAllOrdersInputPort;
 import br.com.fiap.application.ports.in.IInsertOrderInputPort;
-import jakarta.validation.Valid;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @RestController
@@ -25,7 +22,10 @@ import lombok.Data;
 public class OrderController {
 
 	@Autowired
-	private IInsertOrderInputPort iInsertOrderInputPort;
+	private final IInsertOrderInputPort iInsertOrderInputPort;
+	
+	@Autowired
+	private final IFindAllOrdersInputPort iFindAllOrdersInputPort;
 
 	private final OrderRequestToOrderMapper orderRequestToOrderMapper;
 
@@ -37,6 +37,6 @@ public class OrderController {
 
 	@GetMapping
 	public List<Order> listOrders() {
-		return iInsertOrderInputPort.listAllOrders();
+		return iFindAllOrdersInputPort.listAllOrders();
 	}
 }

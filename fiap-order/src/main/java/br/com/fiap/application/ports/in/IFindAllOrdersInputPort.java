@@ -1,9 +1,11 @@
 package br.com.fiap.application.ports.in;
 
+import java.util.List;
+
 import br.com.fiap.application.core.domain.Order;
 
-public interface IInsertOrderInputPort {
+public interface IFindAllOrdersInputPort {
 
-	Order insert(Order order);
+	List<Order> listAllOrders();
 
 }
