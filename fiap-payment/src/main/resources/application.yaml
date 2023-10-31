@@ -17,7 +17,7 @@ spring:
       show-sql: true
 mercadopago:
   api:
-    key: APP_USR-5516422847471219-102908-bc225d58f3d204db92a76693f895fddb-1443640939
+    key: APP_ZZZ-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 cors:
   origin-patterns: "http://localhost:3000,http://localhost:8080"
 
