@@ -1,0 +1,23 @@
+server:
+  port: 8081
+spring:
+  main:
+    allow-bean-definition-overriding: true
+    datasource:
+      driver-class-name: org.postgresql.Driver
+      url: jdbc:postgresql://localhost:5432/db_payments?useTimezone=true&serverTimezone=UTC
+      username: postgres
+      password: admin
+    jpa:
+      hibernate:
+        ddl-auto: update
+      properties:
+        hibernate:
+          dialect: org.hibernate.dialect.PostgreSQLDialect
+      show-sql: true
+mercadopago:
+  api:
+    key: APP_USR-5516422847471219-102908-bc225d58f3d204db92a76693f895fddb-1443640939
+cors:
+  origin-patterns: "http://localhost:3000,http://localhost:8080"
+

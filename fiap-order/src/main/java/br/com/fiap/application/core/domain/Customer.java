@@ -1,5 +1,7 @@
 package br.com.fiap.application.core.domain;
 
+import org.hibernate.validator.constraints.br.CPF;
+
 public class Customer {
 
 	private String nameCustomer;

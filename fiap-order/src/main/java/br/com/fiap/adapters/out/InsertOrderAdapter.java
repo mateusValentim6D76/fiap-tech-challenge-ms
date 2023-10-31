@@ -1,6 +1,5 @@
 package br.com.fiap.adapters.out;
 
-import java.util.List;
 
 import org.springframework.stereotype.Component;
 
