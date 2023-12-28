@@ -1,2 +1,5 @@
-package br.com.fiap.application.core.domain;public enum OrderStatus {
+package br.com.fiap.application.core.domain;
+
+public enum OrderStatus {
+    RECEIVED;
 }

@@ -10,6 +10,8 @@ public class Order {
 	private String orderDescription;
 	private Double price;
 	private Customer customer;
+
+	private OrderStatus ORDER_STATUS;
 	
 	public Order() {
 		
@@ -20,6 +22,7 @@ public class Order {
 		this.product = product;
 		this.orderDescription = orderDescription;
 		this.price = price;
+		this.ORDER_STATUS = OrderStatus.RECEIVED;
 		this.customer = customer;
 	}
 
@@ -70,5 +73,12 @@ public class Order {
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
-	
+
+	public OrderStatus getORDER_STATUS() {
+		return ORDER_STATUS;
+	}
+
+	public void setORDER_STATUS(OrderStatus ORDER_STATUS) {
+		this.ORDER_STATUS = ORDER_STATUS;
+	}
 }

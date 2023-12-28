@@ -15,8 +15,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>fiap-order</module>
-        <module>fiap-payment</module>
-        <module>fiap-payment</module>
+        <module>fiap-payment-pix</module>
     </modules>
 
     <properties>
