@@ -14,8 +14,21 @@ const agent = new https.Agent({
     passphrase: ""
 })
 
-const credentials = Buffer.from(`${process.env.GN_CLIENT_ID}: ${process.env.GN_CLIENT_SECRET}`)
+const credentials = Buffer.from(`${process.env.GN_CLIENT_ID}:${process.env.GN_CLIENT_SECRET}`)
 .toString('base64');
+
+axios({
+    method: 'POST',
+    url: `${process.env.GN_ENDPOINT}/oauth/token`,
+    headers: {
+        Authorization: `Basic ${credentials}`,
+        'Content-Type': 'application/json'
+    },
+    httpsAgent: agent,
+    data: {
+        grant_type: 'client_credentials'
+    } 
+}).then((response) => console.log(response.data));
 
 
 
