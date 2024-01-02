@@ -1,4 +1,4 @@
-if(process.env.NODE_ENV !== 'production'){
+if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config()
 }
 
@@ -17,14 +17,14 @@ const agent = new https.Agent({
 })
 
 const credentials = Buffer.from(`${process.env.GN_CLIENT_ID}:${process.env.GN_CLIENT_SECRET}`)
-.toString('base64');
+    .toString('base64');
 
 const app = express();
 app.set('view engine', 'ejs')
 app.set('views', 'src/views')
 
-app.get('/', (req, res) => {
-    axios({
+app.get('/', async (req, res) => {
+    const authResponse = await axios({
         method: 'POST',
         url: `${process.env.GN_ENDPOINT}/oauth/token`,
         headers: {
@@ -34,34 +34,34 @@ app.get('/', (req, res) => {
         httpsAgent: agent,
         data: {
             grant_type: 'client_credentials'
-        } 
-    }).then((response) => {
-        const accessToken = response.data?.access_token;
-        const reqGN = axios.create({
-            baseURL: process.env.GN_ENDPOINT,
-            httpsAgent: agent,
-            headers: {
-                Authorization: `Bearer ${accessToken}`,
-                'Content-Type': 'application/json'
-            }
-        });
-        const dataCob = {
-            calendario: {
-              expiracao: 3600
-            },
-            devedor: {
-              cpf: '12345678909',
-              nome: 'Regis da Silva'
-            },
-            valor: {
-              original: '123.45'
-            },
-            chave: 'd7510bcc-b420-4c02-9ccb-55cba0e898f1',
-            solicitacaoPagador: 'Cobrança dos serviços prestados.'
-          }
-          reqGN.post('/v2/cob',dataCob).then((response) => res.send(response.data)
-    );
-        });
+        }
+    });
+
+    const accessToken = authResponse.data?.access_token;
+    const reqGN = axios.create({
+        baseURL: process.env.GN_ENDPOINT,
+        httpsAgent: agent,
+        headers: {
+            Authorization: `Bearer ${accessToken}`,
+            'Content-Type': 'application/json'
+        }
+    });
+    const dataCob = {
+        calendario: {
+            expiracao: 3600
+        },
+        devedor: {
+            cpf: '12345678909',
+            nome: 'Regis da Silva'
+        },
+        valor: {
+            original: '123.45'
+        },
+        chave: 'd7510bcc-b420-4c02-9ccb-55cba0e898f1',
+        solicitacaoPagador: 'Cobrança dos serviços prestados.'
+    }
+  const cobResponse = await reqGN.post('/v2/cob', dataCob)
+        res.send(cobResponse.data)
 });
 
 app.listen(8002, () => {
