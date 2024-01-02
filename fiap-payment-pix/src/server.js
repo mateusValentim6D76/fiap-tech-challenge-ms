@@ -64,7 +64,7 @@ app.get('/', async (req, res) => {
 
     const qrCodeResponse = await reqGN.get(`/v2/loc/${cobResponse.data.loc.id}/qrcode`)
 
-    res.send(qrCodeResponse.data)
+    res.render('qrcode', {qrcodeImage: qrCodeResponse.data.imagemQrcode})
 });
 
 app.listen(8002, () => {
