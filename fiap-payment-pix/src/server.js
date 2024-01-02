@@ -31,7 +31,14 @@ axios({
     } 
 }).then((response) => {
     const accessToken = response.data?.access_token;
-    const endPoint = `${process.env.GN_ENDPOINT}/v2/cob`;
+    const reqGN = axios.create({
+        baseURL: process.env.GN_ENDPOINT,
+        httpsAgent: agent,
+        headers: {
+            Authorization: `Bearer ${accessToken}`,
+            'Content-Type': 'application/json'
+        }
+    });
     const dataCob = {
         calendario: {
           expiracao: 3600
@@ -46,15 +53,8 @@ axios({
         chave: 'd7510bcc-b420-4c02-9ccb-55cba0e898f1',
         solicitacaoPagador: 'Cobrança dos serviços prestados.'
       }
-      const config = {
-        httpsAgent: agent,
-        headers: {
-            Authorization: `Bearer ${accessToken}`,
-            'Content-Type': 'application/json'
-        }
-      };
-      axios.post(endPoint, dataCob, config).then(console.log);
-});
-
+      reqGN.post('/v2/cob',dataCob).then((response) => console.log(response.data)
+);
+    });
 
 console.log(cert)
