@@ -5,7 +5,8 @@ if(process.env.NODE_ENV !== 'production'){
 const axios = require('axios');
 const fs = require('fs');
 const path = require('path');
-const https = require('https')
+const https = require('https');
+const { env } = require('process');
 
 const cert = fs.readFileSync(
     path.resolve(__dirname, `../certs/${process.env.GN_CERT}`))
@@ -28,9 +29,32 @@ axios({
     data: {
         grant_type: 'client_credentials'
     } 
-}).then((response) => console.log(response.data));
-
-
+}).then((response) => {
+    const accessToken = response.data?.access_token;
+    const endPoint = `${process.env.GN_ENDPOINT}/v2/cob`;
+    const dataCob = {
+        calendario: {
+          expiracao: 3600
+        },
+        devedor: {
+          cpf: '12345678909',
+          nome: 'Regis da Silva'
+        },
+        valor: {
+          original: '123.45'
+        },
+        chave: 'd7510bcc-b420-4c02-9ccb-55cba0e898f1',
+        solicitacaoPagador: 'Cobrança dos serviços prestados.'
+      }
+      const config = {
+        httpsAgent: agent,
+        headers: {
+            Authorization: `Bearer ${accessToken}`,
+            'Content-Type': 'application/json'
+        }
+      };
+      axios.post(endPoint, dataCob, config).then(console.log);
+});
 
 
 console.log(cert)
