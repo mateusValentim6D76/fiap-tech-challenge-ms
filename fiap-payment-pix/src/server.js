@@ -60,14 +60,15 @@ app.get('/', async (req, res) => {
         chave: 'd7510bcc-b420-4c02-9ccb-55cba0e898f1',
         solicitacaoPagador: 'Cobrança dos serviços prestados.'
     }
-  const cobResponse = await reqGN.post('/v2/cob', dataCob)
-        res.send(cobResponse.data)
+    const cobResponse = await reqGN.post('/v2/cob', dataCob)
+
+    const qrCodeResponse = await reqGN.get(`/v2/loc/${cobResponse.data.loc.id}/qrcode`)
+
+    res.send(qrCodeResponse.data)
 });
 
 app.listen(8002, () => {
     console.log('running')
 });
-
-
 
 console.log(cert)
