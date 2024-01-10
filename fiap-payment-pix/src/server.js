@@ -45,6 +45,11 @@ if (process.env.NODE_ENV !== 'production') {
     res.send(cobResponse.data);
   });
 
+  app.post('/webhook(/pix)?', (req, res) => {
+    console.log(req.bodyParser)
+    res.send(200)
+  })
+
 app.listen(8002, () => {
     console.log('running')
 });
