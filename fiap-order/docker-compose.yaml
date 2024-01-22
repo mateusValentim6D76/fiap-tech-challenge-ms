@@ -1,0 +1,31 @@
+version: '3'
+services:
+  order:
+    build: ./fiap-order
+    ports:
+      - "8080:8080"
+  order_db:
+      image: postgres:latest
+      restart: always
+      environment:
+        TZ: America/Sao_Paulo
+        POSTGRES_PASSWORD: admin
+        POSTGRES_USER: postgres
+        POSTGRES_DB: order
+      ports:
+        - 5432:5432
+  fiap-order:
+    image: mvalentim/fiap-order
+    restart: always
+    build: C:/desenvolvimento/projetos/fiap-tech-challenge
+    working_dir: /fiap-order
+    environment:
+      TZ: America/Sao_Paulo
+      SPRING.DATASOURCE.URL: jdbc:postgres://localhost:5432/order?useTimezone=true&serverTimezone=UTC
+      SPRING.DATASOURCE.USERNAME: postgres
+      SPRING.DATASOURCE.PASSWORD: admin
+    ports:
+      - 8080:8080
+    command: mvn spring-boot:run
+    depends_on:
+      - order_db
